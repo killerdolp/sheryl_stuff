@@ -1,0 +1,116 @@
+
+{% block content %}
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script>
+  $(document).ready(function() {
+
+
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.avatar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+});
+	</script>
+
+
+<div class="container bootstrap snippet">
+    <div class="row">
+  		<div class="col-sm-10"><h1>User name</h1></div>
+
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+
+
+      <div class="text-center">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+      </div>
+
+
+
+
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Particulars</a></li>
+                <li><a data-toggle="tab" href="#messages">Skills</a></li>
+
+              </ul>
+
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                  <form class="form"  method="POST"  enctype="multipart/form-data">
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Username</h4></label>
+                              {{ form.Username(class="form-control",placeholder="Enter username") }}
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4>Name</h4></label>
+                              {{ form.Name(class="form-control",placeholder="Enter name") }}
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="age"><h4>Age</h4></label>
+                              {{ form.Age(class="form-control",placeholder="Enter age ") }}
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                             <label for="mobile"><h4>Mobile</h4></label>
+                              {{ form.Mobile(class="form-control",placeholder="Enter mobile number") }}
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Email</h4></label>
+                              {{ form.Email(class="form-control",placeholder="your@email.com") }}
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Location</h4></label>
+                              {{ form.Location(class="form-control",placeholder="Enter location") }}
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="photo"><h4>Profie Picture</h4></label>
+                          <input type="file" name="photo">
+                      </div>
+                      <input type="submit" value="create">
+
+              	</form>
+
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+{% endblock content %}
